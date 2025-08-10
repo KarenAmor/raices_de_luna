@@ -22,7 +22,7 @@ const Dashboard = ({ usuario, onLogout, onNavigate }) => {
   const fetchStats = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:3000/inventario/stats', {
+      const response = await fetch('https://raices-de-luna.onrender.com/inventario/stats', {
         headers: {
           'Authorization': `Bearer ${token}`,
         },

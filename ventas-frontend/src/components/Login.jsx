@@ -27,7 +27,7 @@ const Login = ({ onLogin }) => {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:3000/auth/login', {
+      const response = await fetch('https://raices-de-luna.onrender.com/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

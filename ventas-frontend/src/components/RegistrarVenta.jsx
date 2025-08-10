@@ -90,7 +90,7 @@ const RegistrarVenta = ({ onBack }) => {
         ventaData.dias_credito = formData.dias_credito;
       }
 
-      const response = await fetch('http://localhost:3000/ventas', {
+      const response = await fetch('https://raices-de-luna.onrender.com/ventas', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

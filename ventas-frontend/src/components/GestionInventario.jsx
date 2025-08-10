@@ -109,7 +109,7 @@ const GestionInventario = ({ onBack }) => {
         precio_unitario_venta: parseFloat(formData.precio_unitario_venta)
       };
 
-      const response = await fetch('http://localhost:3000/inventario/lote', {
+      const response = await fetch('https://raices-de-luna.onrender.com/inventario/lote', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

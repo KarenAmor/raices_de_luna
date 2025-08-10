@@ -25,7 +25,7 @@ const GestionCreditos = ({ onBack }) => {
   const fetchVentas = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:3000/ventas', {
+      const response = await fetch('https://raices-de-luna.onrender.com/ventas', {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -54,7 +54,7 @@ const GestionCreditos = ({ onBack }) => {
     setProcesando(ventaId);
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:3000/ventas/${ventaId}/pagar`, {
+      const response = await fetch(`https://raices-de-luna.onrender.com/ventas/${ventaId}/pagar`, {
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${token}`,
