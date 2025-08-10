@@ -1,0 +1,105 @@
+{
+  "lotes": [
+    {
+      "id_lote": 1,
+      "fecha_creacion": "2025-08-09",
+      "ingredientes": [
+        {
+          "nombre": "Tricofero de barry",
+          "costo_unitario": 32000,
+          "cantidad_comprada": 4,
+          "costo_total_ingrediente": 128000
+        },
+        {
+          "nombre": "Laurel",
+          "costo_unitario": 2000,
+          "cantidad_comprada": 10,
+          "costo_total_ingrediente": 20000
+        },
+        {
+          "nombre": "Jenjibre",
+          "costo_unitario": 5000,
+          "cantidad_comprada": 1,
+          "costo_total_ingrediente": 5000
+        },
+        {
+          "nombre": "Estopa de Coco",
+          "costo_unitario": 0,
+          "cantidad_comprada": 3,
+          "costo_total_ingrediente": 0
+        },
+        {
+          "nombre": "Cola de caballo",
+          "costo_unitario": 0,
+          "cantidad_comprada": 3,
+          "costo_total_ingrediente": 0
+        },
+        {
+          "nombre": "Quina",
+          "costo_unitario": 0,
+          "cantidad_comprada": 3,
+          "costo_total_ingrediente": 0
+        },
+        {
+          "nombre": "Romero",
+          "costo_unitario": 0,
+          "cantidad_comprada": 3,
+          "costo_total_ingrediente": 0
+        },
+        {
+          "nombre": "Clavo de olor",
+          "costo_unitario": 0,
+          "cantidad_comprada": 3,
+          "costo_total_ingrediente": 0
+        },
+        {
+          "nombre": "Canela",
+          "costo_unitario": 0,
+          "cantidad_comprada": 3,
+          "costo_total_ingrediente": 0
+        },
+        {
+          "nombre": "Recipiente",
+          "costo_unitario": 1800,
+          "cantidad_comprada": 100,
+          "costo_total_ingrediente": 180000
+        },
+        {
+          "nombre": "Etiqueta",
+          "costo_unitario": 1250,
+          "cantidad_comprada": 11,
+          "costo_total_ingrediente": 13750
+        }
+      ],
+      "costo_total_produccion": 420000,
+      "unidades_producidas": 100,
+      "precio_unitario_venta": 20000,
+      "unidades_disponibles": 100
+    }
+  ],
+  "total_lotes": 1,
+  "unidades_disponibles": 100,
+  "unidades_producidas": 100,
+  "unidades_vendidas": 0,
+  "ventas": {
+    "total_ventas": 0,
+    "ventas_por_vendedora": {
+      "Karen Moreno": {
+        "cantidad": 0,
+        "total_efectivo": 0,
+        "total_credito": 0
+      },
+      "Esperanza Garrido": {
+        "cantidad": 0,
+        "total_efectivo": 0,
+        "total_credito": 0
+      }
+    }
+  },
+  "finanzas": {
+    "total_efectivo": 0,
+    "total_por_cobrar": 0,
+    "total_ventas": 0,
+    "ganancia_bruta": 0
+  }
+}
