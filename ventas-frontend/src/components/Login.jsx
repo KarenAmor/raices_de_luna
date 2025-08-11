@@ -29,7 +29,7 @@ const Login = ({ onLogin }) => {
     const API_URL = import.meta.env.VITE_API_URL;
 
     try {
-      const response = await fetch(`${API_URL}/inventario/auth/login`, {
+      const response = await fetch(`${API_URL}/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

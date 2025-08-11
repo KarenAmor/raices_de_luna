@@ -26,7 +26,7 @@ const GestionCreditos = ({ onBack }) => {
   const fetchVentas = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`${API_URL}/inventario/ventas`, {
+      const response = await fetch(`${API_URL}/ventas`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },

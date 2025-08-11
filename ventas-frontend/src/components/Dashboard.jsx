@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx';
 import { Button } from '@/components/ui/button.jsx';
 import { Badge } from '@/components/ui/badge.jsx';
-import { 
-  Package, 
-  DollarSign, 
-  CreditCard, 
-  Users, 
-  ShoppingCart, 
+import {
+  Package,
+  DollarSign,
+  CreditCard,
+  Users,
+  ShoppingCart,
   LogOut,
   TrendingUp,
   AlertCircle
@@ -21,35 +21,47 @@ const Dashboard = ({ usuario, onLogout, onNavigate }) => {
 
   const API_URL = import.meta.env.VITE_API_URL;
 
-console.log('API_URL:', API_URL);
+  console.log('API_URL:', API_URL);
 
- const fetchStats = async () => {
-  try {
-    const token = localStorage.getItem('token');
-    const response = await fetch(`${API_URL}/inventario/stats`, {
-      headers: {
-        'Authorization': `Bearer ${token}`,
-      },
-    });
+  const fetchStats = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch(`${API_URL}/inventario/stats`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      });
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      if (data.success) {
+        const raw = data.data;
+
+        const adaptedStats = {
+          inventario: {
+            unidades_disponibles: raw.unidades_disponibles ?? 0,
+            unidades_producidas: raw.unidades_producidas ?? 0,
+            unidades_vendidas: raw.unidades_vendidas ?? 0,
+            lote_actual: raw.lotes?.length ? raw.lotes[0] : null
+          },
+          ventas: raw.ventas ?? {},
+          finanzas: raw.finanzas ?? {}
+        };
+
+        setStats(adaptedStats);
+      } else {
+        setError('Error al cargar las estadísticas');
+      }
+    } catch (err) {
+      console.error('Error en fetchStats:', err);
+      setError('No se pudo conectar con el servidor');
+    } finally {
+      setLoading(false);
     }
-
-    const data = await response.json();
-    if (data.success) {
-      setStats(data.data);
-    } else {
-      setError('Error al cargar las estadísticas');
-    }
-  } catch (error) {
-    console.error('Error cargando estadísticas:', error);
-    setError('Error de conexión al cargar estadísticas');
-  } finally {
-    setLoading(false);
-  }
-};
-
+  };
 
   useEffect(() => {
     fetchStats();
@@ -60,7 +72,7 @@ console.log('API_URL:', API_URL);
       style: 'currency',
       currency: 'COP',
       minimumFractionDigits: 0,
-    }).format(amount);
+    }).format(amount || 0);
   };
 
   if (loading) {
@@ -88,8 +100,8 @@ console.log('API_URL:', API_URL);
                 Bienvenida, {usuario.nombre}
               </p>
             </div>
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               onClick={onLogout}
               className="flex items-center gap-2"
             >
@@ -110,14 +122,14 @@ console.log('API_URL:', API_URL);
 
         {/* Acciones Rápidas */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-          <Button 
+          <Button
             onClick={() => onNavigate('ventas')}
             className="h-16 text-lg bg-green-600 hover:bg-green-700"
           >
             <ShoppingCart className="mr-2 h-5 w-5" />
             Registrar Venta
           </Button>
-          <Button 
+          <Button
             onClick={() => onNavigate('inventario')}
             variant="outline"
             className="h-16 text-lg"
@@ -125,7 +137,7 @@ console.log('API_URL:', API_URL);
             <Package className="mr-2 h-5 w-5" />
             Gestionar Inventario
           </Button>
-          <Button 
+          <Button
             onClick={() => onNavigate('creditos')}
             variant="outline"
             className="h-16 text-lg"
@@ -222,7 +234,7 @@ console.log('API_URL:', API_URL);
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    {Object.entries(stats.ventas.ventas_por_vendedora).map(([nombre, datos]) => (
+                    {Object.entries(stats.ventas.ventas_por_vendedora || {}).map(([nombre, datos]) => (
                       <div key={nombre} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
                         <div>
                           <p className="font-medium">{nombre}</p>
@@ -292,10 +304,10 @@ console.log('API_URL:', API_URL);
                           </span>
                         </div>
                         <div className="w-full bg-gray-200 rounded-full h-2 mt-2">
-                          <div 
-                            className="bg-blue-600 h-2 rounded-full" 
-                            style={{ 
-                              width: `${(stats.inventario.unidades_vendidas / stats.inventario.unidades_producidas) * 100}%` 
+                          <div
+                            className="bg-blue-600 h-2 rounded-full"
+                            style={{
+                              width: `${(stats.inventario.unidades_vendidas / (stats.inventario.unidades_producidas || 1)) * 100}%`
                             }}
                           ></div>
                         </div>
@@ -313,4 +325,3 @@ console.log('API_URL:', API_URL);
 };
 
 export default Dashboard;
-
