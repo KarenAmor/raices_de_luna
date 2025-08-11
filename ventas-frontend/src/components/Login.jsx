@@ -26,8 +26,10 @@ const Login = ({ onLogin }) => {
     setLoading(true);
     setError('');
 
+    const API_URL = import.meta.env.VITE_API_URL;
+
     try {
-      const response = await fetch('https://raices-de-luna.onrender.com/auth/login', {
+      const response = await fetch(`${API_URL}/inventario/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

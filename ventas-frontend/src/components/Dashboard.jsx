@@ -19,27 +19,37 @@ const Dashboard = ({ usuario, onLogout, onNavigate }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  const fetchStats = async () => {
-    try {
-      const token = localStorage.getItem('token');
-      const response = await fetch('https://raices-de-luna.onrender.com/inventario/stats', {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-      });
+  const API_URL = import.meta.env.VITE_API_URL;
 
-      const data = await response.json();
-      if (data.success) {
-        setStats(data.data);
-      } else {
-        setError('Error al cargar las estadísticas');
-      }
-    } catch (error) {
-      setError('Error de conexión al cargar estadísticas');
-    } finally {
-      setLoading(false);
+console.log('API_URL:', API_URL);
+
+ const fetchStats = async () => {
+  try {
+    const token = localStorage.getItem('token');
+    const response = await fetch(`${API_URL}/inventario/stats`, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
-  };
+
+    const data = await response.json();
+    if (data.success) {
+      setStats(data.data);
+    } else {
+      setError('Error al cargar las estadísticas');
+    }
+  } catch (error) {
+    console.error('Error cargando estadísticas:', error);
+    setError('Error de conexión al cargar estadísticas');
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   useEffect(() => {
     fetchStats();

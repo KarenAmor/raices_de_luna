@@ -22,10 +22,11 @@ const GestionCreditos = ({ onBack }) => {
   const [error, setError] = useState('');
   const [procesando, setProcesando] = useState(null);
 
+  const API_URL = import.meta.env.VITE_API_URL;
   const fetchVentas = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('https://raices-de-luna.onrender.com/ventas', {
+      const response = await fetch(`${API_URL}/inventario/ventas`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
