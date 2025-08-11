@@ -30,33 +30,33 @@
         },
         {
           "nombre": "Cola de caballo",
-          "costo_unitario": 0,
-          "cantidad_comprada": 3,
-          "costo_total_ingrediente": 0
+          "costo_unitario": 1000,
+          "cantidad_comprada": 10,
+          "costo_total_ingrediente":1000
         },
         {
           "nombre": "Quina",
-          "costo_unitario": 0,
-          "cantidad_comprada": 3,
-          "costo_total_ingrediente": 0
+          "costo_unitario": 1000,
+          "cantidad_comprada": 10,
+          "costo_total_ingrediente": 1000
         },
         {
           "nombre": "Romero",
-          "costo_unitario": 0,
-          "cantidad_comprada": 3,
-          "costo_total_ingrediente": 0
+          "costo_unitario": 1000,
+          "cantidad_comprada": 10,
+          "costo_total_ingrediente": 10000
         },
         {
           "nombre": "Clavo de olor",
-          "costo_unitario": 0,
-          "cantidad_comprada": 3,
-          "costo_total_ingrediente": 0
+          "costo_unitario": 1000,
+          "cantidad_comprada": 10,
+          "costo_total_ingrediente": 10000
         },
         {
           "nombre": "Canela",
-          "costo_unitario": 0,
-          "cantidad_comprada": 3,
-          "costo_total_ingrediente": 0
+          "costo_unitario": 1,
+          "cantidad_comprada": 1,
+          "costo_total_ingrediente": 10000
         },
         {
           "nombre": "Recipiente",
